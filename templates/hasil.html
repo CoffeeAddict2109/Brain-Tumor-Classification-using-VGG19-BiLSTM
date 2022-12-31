@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Brain Tumor Detection with MRI</title>
+    <style>
+        body {
+            background-color: #b85757;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .card-container {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .card {
+            background-color: white;
+            flex: 1;
+            max-width: 42rem;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .btn {
+            margin: 8px;
+        }
+
+        #frame {
+            max-width: 24rem;
+        }
+
+        .cr {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="isi-container">
+        <div class="container card-container text-center">
+            <div class="card">
+                <div class="card-header mb-5 pt-3 pb-3">
+                    <h2>Klasifikasi Tumor Otak Berdasarkan Citra</h2>
+                    <h4>MRI dengan Arsitektur VGG19+BiLSTM</h4>
+                </div>
+                <div class="card-body">
+                        <div class=" form mb-5">
+                            {% if img %}
+                            <img id="frame" class="img-fluid mb-5"
+                                src=".{{ url_for('send_uploaded_image', fileimg=img) }}"
+                            />
+                            {% endif %}
+                        </div>
+                    <div id="result">
+                        {% if result %}
+                        Terdeteksi sebagai: <p id="hasil" class="fw-bold fs-3">{{result}}</p>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <button id="clearbtn" class="btn btn-danger" onclick="javascript:history.back(1)">Cek Gambar<br/>Lain</button>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright text-center">
+            <p class="cr">Oleh: Faisal Farris Setyawan </p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</body>
+</html>

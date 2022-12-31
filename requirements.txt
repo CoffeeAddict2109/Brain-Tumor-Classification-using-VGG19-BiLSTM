@@ -1,0 +1,9 @@
+flask
+tensorflow-cpu
+pillow
+numpy
+jinja2
+gunicorn
+itsdangerous
+MarkupSafe
+Werkzeug
